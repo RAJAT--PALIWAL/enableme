@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
 import logging
+from src import responser
 
 app = Flask(__name__)
 
@@ -15,7 +16,9 @@ def assist():
     bin_data = request.data
     data = json.loads(bin_data.decode())
     intent_name = data["queryResult"]["intent"]["displayName"]
-    return
+    result = responser.respond(intent_name, data)
+    print(result)
+    return jsonify(result)
 
 
 if __name__ == "__main__":
