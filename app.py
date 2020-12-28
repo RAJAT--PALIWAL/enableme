@@ -11,6 +11,23 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if request.method == "POST":
+        f = request.files['audio_data']
+        with open('audio.wav', 'wb') as audio:
+            f.save(audio)
+        print('file uploaded successfully')
+        return render_template('profile.html', request="POST")
+    else:
+        return render_template('profile.html')
+
+
+@app.route('/record', methods=['GET', 'POST'])
+def record():
+    return render_template('recorder.html')
+
+
 @app.route("/assist", methods=['GET', 'POST'])
 def assist():
     bin_data = request.data

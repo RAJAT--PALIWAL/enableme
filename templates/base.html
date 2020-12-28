@@ -7,7 +7,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <title>{% block title %} {% endblock %}</title>
   </head>
   <body>
@@ -30,9 +29,12 @@
     </div>
 
     <div class="container-fluid">
+        <div class="row">
+            <button class="primary" onclick="myFunction()">What can you do</button>
+        </div>
       <div class="row">
         <div class="col">
-            <a href="https://www.w3schools.com">
+            <a href="#controls">
                 <img src="{{ url_for('static', filename='blind.svg') }}" alt="Trigger flow for visually impaired" class="img-fluid" width=500px>
             </a>
         </div>
@@ -43,7 +45,14 @@
     </div>
   </div>
 
-
+    <!-- JavaScript for Speech -->
+    <script>
+    function myFunction() {
+        var synth = window.speechSynthesis;
+        var utterThis = new SpeechSynthesisUtterance("Welcome to Enable Me, click on the blind flow to go ahead and build your profile with audio file.");
+        synth.speak(utterThis);
+    }
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
