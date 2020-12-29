@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
 import logging
-from src import responser
+from src import responser, requester
 
 app = Flask(__name__)
 
@@ -18,6 +18,7 @@ def profile():
         with open('audio.wav', 'wb') as audio:
             f.save(audio)
         print('file uploaded successfully')
+        requester.callBase64()
         return render_template('profile.html', request="POST")
     else:
         return render_template('profile.html')
